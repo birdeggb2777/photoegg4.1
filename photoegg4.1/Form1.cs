@@ -13,10 +13,10 @@ namespace photoegg4._1
 {
     public partial class Form1 : Form
     {
-        List<Bitmap> originBitmap=new List<Bitmap>();
+        List<Bitmap> originBitmap = new List<Bitmap>();
         pixelOperate Pixel_C = new pixelOperate();
         int Now_Bitmap = -1;
-        public enum colorFunction { colorTo255,colorToGray};
+        public enum colorFunction { colorTo255, colorToGray, brightness, blurry };
         public Form1()
         {
             InitializeComponent();
@@ -32,20 +32,24 @@ namespace photoegg4._1
                 pictureBox1.Image = a;
                 Now_Bitmap++;
             }
+            blurry();
         }
         public void Pixel_Operate(colorFunction fun)
         {
             int func = (int)fun;
-            Bitmap MyNewBmp = (Bitmap)originBitmap[Now_Bitmap]; 
+            Bitmap MyNewBmp = (Bitmap)originBitmap[Now_Bitmap];
             Rectangle MyRec = new Rectangle(0, 0, MyNewBmp.Width, MyNewBmp.Height);
-            BitmapData MyBmpData = MyNewBmp.LockBits(MyRec, ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);   
+            BitmapData MyBmpData = MyNewBmp.LockBits(MyRec, ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
             unsafe
             {
-                if (func==0)
-                    Pixel_C.colorTo255((byte*)MyBmpData.Scan0, MyNewBmp.Width, MyNewBmp.Height,4);
-                else if (func==1)
+                if (func == (int)colorFunction.colorTo255)
+                    Pixel_C.colorTo255((byte*)MyBmpData.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4);
+                else if (func == (int)colorFunction.colorToGray)
                     Pixel_C.colorToGray((byte*)MyBmpData.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4);
-
+                else if (func == (int)colorFunction.brightness)
+                    Pixel_C.brightness((byte*)MyBmpData.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, -100);
+                else if (func == (int)colorFunction.blurry)
+                    Pixel_C.blurry((byte*)MyBmpData.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, 20);
             }
             MyNewBmp.UnlockBits(MyBmpData);
         }
@@ -61,6 +65,26 @@ namespace photoegg4._1
             if (Now_Bitmap < 0) return;
             Pixel_Operate(colorFunction.colorToGray);
             pictureBox1.Image = originBitmap[Now_Bitmap];
+        }
+        private void brightness()
+        {
+            if (Now_Bitmap < 0) return;
+            Pixel_Operate(colorFunction.brightness);
+            pictureBox1.Image = originBitmap[Now_Bitmap];
+        }
+        private void blurry()
+        {
+            System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();//引用stopwatch物件
+            sw.Reset();//碼表歸零
+            sw.Start();//碼表開始計時
+                       /////////////////////////
+            if (Now_Bitmap < 0) return;
+            Pixel_Operate(colorFunction.blurry);
+            pictureBox1.Image = originBitmap[Now_Bitmap];
+            ///////////////////////////
+            sw.Stop();//碼錶停止
+
+            MessageBox.Show(sw.Elapsed.TotalMilliseconds.ToString());
         }
     }
 }
