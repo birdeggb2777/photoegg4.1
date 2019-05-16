@@ -1,12 +1,17 @@
 ﻿#pragma once
-
+#include <math.h>  
 using namespace System;
 
 namespace pix {
+
 	public ref class pixelOperate
 	{
+
 		// TODO: 請在此新增此類別的方法。
 	public:
+	/*	void colorTo255(unsigned char*, int, int, int);
+		void BGRToHSV(unsigned char, unsigned char, unsigned char);
+		void  HSVToBGR(double, double, double, unsigned char, unsigned char, unsigned char);*/
 		void inline colorTo255(unsigned char* ptr, int width, int height, int channel)
 		{
 			unsigned char** fp = new unsigned char* [height];
@@ -110,7 +115,7 @@ namespace pix {
 			}
 			delete[] fp;
 		}
-
+		
 		void  inline blurry2(unsigned char* ptr, unsigned char* ptr2, int width, int height, int channel, int value)
 		{
 			unsigned char** fp = new unsigned char* [height];
@@ -191,6 +196,149 @@ namespace pix {
 			}
 			delete[] fp;
 		}
+
+		void ConvertHSV(unsigned char* ptr, int width, int height,int H,int S,int V, int channel)
+		{
+			unsigned char** fp = new unsigned char* [height];
+			int Stride = width * channel, x = 0, y = 0;
+			for (int j = 0; j < height; j++)
+				fp[j] = ptr + (Stride * j);
+			for (y = 0; y < height; y++)
+			{
+				for (x = 0; x < Stride; x += channel)
+				{
+					BGRToHSV(H,S,V,fp[y][x], fp[y][x + 1], fp[y][x + 2]);
+				}
+			}
+			delete[] fp;
+		}
+		/////////////////////////////
+		//////////////////////////////
+
+		static double HSVMin(double a, double b) {
+			return a <= b ? a : b;
+		}
+
+		static double HSVMax(double a, double b) {
+			return a >= b ? a : b;
+		}
+
+		void BGRToHSV(int H,int S,int V,unsigned char& colorB, unsigned char& colorG, unsigned char& colorR)
+		{
+			double delta, min;
+			double h = 0, s, v;
+
+			min = HSVMin(HSVMin(colorR, colorG), colorB);
+			v = HSVMax(HSVMax(colorR, colorG), colorB);
+			delta = v - min;
+
+			if (v == 0.0)
+				s = 0;
+			else
+				s = delta / v;
+
+			if (s == 0)
+				h = 0.0;
+
+			else
+			{
+				if (colorR == v)
+					h = (colorG - colorB) / delta;
+				else if (colorG == v)
+					h = 2 + (colorB - colorR) / delta;
+				else if (colorB == v)
+					h = 4 + (colorR - colorG) / delta;
+
+				h *= 60;
+
+				if (h < 0.0)
+					h = h + 360;
+			}
+			h += H;
+			s += S /36;
+			if (s > 1.0) s = 1.0;
+			if (s < 0) s = 0;
+			v += V;
+			if (v > 250) v = 250;
+			if (v < 0) v = 0;
+			HSVToBGR(h, s, v, colorB, colorG, colorR);
+		}
+
+
+
+		void  HSVToBGR(double H, double S, double V, unsigned char& colorB, unsigned char& colorG, unsigned char& colorR)
+		{
+
+			if (S == 0)
+			{
+				colorR = V;
+				colorG = V;
+				colorB = V;
+			}
+			else
+			{
+				int i;
+				double f, p, q, t;
+
+				if (H == 360)
+					H = 0;
+				else
+					H = H / 60;
+
+				i = (int)trunc(H);
+				f = H - i;
+
+				p = V * (1.0 - S);
+				q = V * (1.0 - (S * f));
+				t = V * (1.0 - (S * (1.0 - f)));
+
+				switch (i)
+				{
+				case 0:
+					colorR = V;
+					colorG = t;
+					colorB = p;
+					break;
+
+				case 1:
+					colorR = q;
+					colorG = V;
+					colorB = p;
+					break;
+				case 2:
+					colorR = p;
+					colorG = V;
+					colorB = t;
+					break;
+
+				case 3:
+					colorR = p;
+					colorG = q;
+					colorB = V;
+					break;
+
+				case 4:
+					colorR = t;
+					colorG = p;
+					colorB = V;
+					break;
+
+				default:
+					colorR = V;
+					colorG = p;
+					colorB = q;
+					break;
+				}
+
+			}
+
+			/*struct RcolorGcolorB rcolorGcolorB;
+			colorR= colorR* 255;
+			colorG = colorG * 255;
+			colorB = colorB * 255;		*/
+		}
+
+
 	};
 };
 

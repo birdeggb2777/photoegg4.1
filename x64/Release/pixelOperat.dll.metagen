@@ -17,3 +17,8 @@ Class pix.pixelOperate: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     brightness(Byte*, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
     blurry(Byte*, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
     blurry2(Byte*, Byte*, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
+    ConvertHSV(Byte*, Int32, Int32, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
+    HSVMin(Double, Double): PrivateScope, Public, Static, HideBySig
+    HSVMax(Double, Double): PrivateScope, Public, Static, HideBySig
+    BGRToHSV(Int32, Int32, Int32, Byte* IsImplicitlyDereferenced, Byte* IsImplicitlyDereferenced, Byte* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig
+    HSVToBGR(Double, Double, Double, Byte* IsImplicitlyDereferenced, Byte* IsImplicitlyDereferenced, Byte* IsImplicitlyDereferenced): PrivateScope, Public, HideBySig

@@ -16,7 +16,7 @@ namespace photoegg4._1
         List<Bitmap> originBitmap = new List<Bitmap>();
         pixelOperate Pixel_C = new pixelOperate();
         int Now_Bitmap = -1;
-        public enum colorFunction { colorTo255, colorToGray, brightness, blurry };
+        public enum colorFunction { colorTo255, colorToGray, brightness, blurry ,HSV};
         public Form1()
         {
             InitializeComponent();
@@ -32,7 +32,7 @@ namespace photoegg4._1
                 pictureBox1.Image = a;
                 Now_Bitmap++;
             }
-            blurry();
+            HSV();
         }
         public void Pixel_Operate(colorFunction fun)
         {
@@ -52,6 +52,8 @@ namespace photoegg4._1
                     Pixel_C.brightness((byte*)MyBmpData.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, -100);
                 else if (func == (int)colorFunction.blurry)
                     Pixel_C.blurry2((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, 30);
+                else if (func == (int)colorFunction.HSV)
+                    Pixel_C.ConvertHSV((byte*)MyBmpData.Scan0, MyNewBmp.Width, MyNewBmp.Height,0,-50,0,4);
             }
             MyNewBmp.UnlockBits(MyBmpData);
             MyNewBmp2.UnlockBits(MyBmpData2);
@@ -79,6 +81,12 @@ namespace photoegg4._1
         {
             if (Now_Bitmap < 0) return;
             Pixel_Operate(colorFunction.blurry);
+            pictureBox1.Image = originBitmap[Now_Bitmap];
+        }
+        private void HSV()
+        {
+            if (Now_Bitmap < 0) return;
+            Pixel_Operate(colorFunction.HSV);
             pictureBox1.Image = originBitmap[Now_Bitmap];
         }
     }
