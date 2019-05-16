@@ -1,24 +1,24 @@
 ﻿  pixelOperat.cpp
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(44): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(274): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(275): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(276): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(298): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(299): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(300): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(304): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(305): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(306): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(309): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(310): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(311): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(315): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(316): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(317): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(321): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(322): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(323): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(327): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(328): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\pixelOperat\pixelOperat.h(329): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
-  pixelOperat.vcxproj -> C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\x64\Release\pixelOperat.dll
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(44): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(265): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(266): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(267): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(289): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(290): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(291): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(295): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(296): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(297): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(300): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(301): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(302): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(306): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(307): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(308): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(312): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(313): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(314): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(318): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(319): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\pixelOperat\pixelOperat.h(320): warning C4244: '=': 將 'double' 轉換為 'unsigned char'，由於類型不同，可能導致資料遺失
+  pixelOperat.vcxproj -> E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\x64\Release\pixelOperat.dll

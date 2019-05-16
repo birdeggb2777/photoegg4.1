@@ -53,7 +53,7 @@ namespace photoegg4._1
                 else if (func == (int)colorFunction.blurry)
                     Pixel_C.blurry2((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, 30);
                 else if (func == (int)colorFunction.HSV)
-                    Pixel_C.ConvertHSV((byte*)MyBmpData.Scan0, MyNewBmp.Width, MyNewBmp.Height,0,-50,0,4);
+                    Pixel_C.ConvertHSV((byte*)MyBmpData.Scan0, MyNewBmp.Width, MyNewBmp.Height,0,0,0,4);
             }
             MyNewBmp.UnlockBits(MyBmpData);
             MyNewBmp2.UnlockBits(MyBmpData2);
