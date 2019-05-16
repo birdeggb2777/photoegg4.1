@@ -38,9 +38,10 @@ namespace photoegg4._1
         {
             int func = (int)fun;
             Bitmap MyNewBmp = (Bitmap)originBitmap[Now_Bitmap];
+            Bitmap MyNewBmp2 = (Bitmap)MyNewBmp.Clone();
             Rectangle MyRec = new Rectangle(0, 0, MyNewBmp.Width, MyNewBmp.Height);
             BitmapData MyBmpData = MyNewBmp.LockBits(MyRec, ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
-            BitmapData MyBmpData2 = ((Bitmap)(MyNewBmp.Clone())).LockBits(MyRec, ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
+            BitmapData MyBmpData2 = MyNewBmp2.LockBits(MyRec, ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
             unsafe
             {
                 if (func == (int)colorFunction.colorTo255)
@@ -50,9 +51,10 @@ namespace photoegg4._1
                 else if (func == (int)colorFunction.brightness)
                     Pixel_C.brightness((byte*)MyBmpData.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, -100);
                 else if (func == (int)colorFunction.blurry)
-                    Pixel_C.blurry2((byte*)MyBmpData.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4,30, (byte*)MyBmpData2.Scan0);
+                    Pixel_C.blurry2((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, 30);
             }
             MyNewBmp.UnlockBits(MyBmpData);
+            MyNewBmp2.UnlockBits(MyBmpData2);
         }
         private void 反向ToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -83,12 +85,12 @@ namespace photoegg4._1
 }
 
 
-  /* System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();//引用stopwatch物件
-            sw.Reset();//碼表歸零
-            sw.Start();//碼表開始計時
-                       /////////////////////////*/
+/* System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();//引用stopwatch物件
+          sw.Reset();//碼表歸零
+          sw.Start();//碼表開始計時
+                     /////////////////////////*/
 
-            ///////////////////////////
-          /*  sw.Stop();//碼錶停止
+///////////////////////////
+/*  sw.Stop();//碼錶停止
 
-            MessageBox.Show(sw.Elapsed.TotalMilliseconds.ToString());*/
+  MessageBox.Show(sw.Elapsed.TotalMilliseconds.ToString());*/

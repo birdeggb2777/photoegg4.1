@@ -111,11 +111,10 @@ namespace pix {
 			delete[] fp;
 		}
 
-		void  inline blurry2(unsigned char* ptr, int width, int height, int channel, int value, unsigned char* ptr2)
+		void  inline blurry2(unsigned char* ptr, unsigned char* ptr2, int width, int height, int channel, int value)
 		{
 			unsigned char** fp = new unsigned char* [height];
 			unsigned char** fp2 = new unsigned char* [height];
-
 			const int recSize = ((value * 2 + 1) * (value * 2 + 1));
 			const int recWidth = value * channel;
 			int Stride = width * channel, x = 0, y = 0;
@@ -135,7 +134,7 @@ namespace pix {
 			{
 				for (x = 0; x < Stride; x += channel)
 				{
-					if (x ==0)
+					if (x == 0)
 					{
 						for (y2 = -value; y2 <= value; y2++)
 						{
@@ -154,11 +153,11 @@ namespace pix {
 						fp[y][x] = countB / (recSize - reduceRecSize2);
 						fp[y][x + 1] = countG / (recSize - reduceRecSize2);
 						fp[y][x + 2] = countR / (recSize - reduceRecSize2);
-						reduceRecSize2=0;
+						reduceRecSize2 = 0;
 					}
 					else
 					{
-						for (y2 = -value, x2 = -recWidth-channel; y2 <= value; y2++)
+						for (y2 = -value, x2 = -recWidth - channel; y2 <= value; y2++)
 						{
 							if (y + y2 < 0 || y + y2 >= height || x + x2 < 0 || x + x2 >= Stride)
 							{

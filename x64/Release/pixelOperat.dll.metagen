@@ -16,4 +16,4 @@ Class pix.pixelOperate: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     colorToGray(Byte*, Int32, Int32, Int32): PrivateScope, Public, HideBySig
     brightness(Byte*, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
     blurry(Byte*, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
-    blurry2(Byte*, Int32, Int32, Int32, Int32, Byte*): PrivateScope, Public, HideBySig
+    blurry2(Byte*, Byte*, Int32, Int32, Int32, Int32): PrivateScope, Public, HideBySig
