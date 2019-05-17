@@ -33,11 +33,15 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.檔案ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.載入圖片ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.濾鏡ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.反向ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.詼諧ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.色彩ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.亮度ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.模糊ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -52,7 +56,8 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(21, 21);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.檔案ToolStripMenuItem,
-            this.濾鏡ToolStripMenuItem});
+            this.濾鏡ToolStripMenuItem,
+            this.色彩ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -75,32 +80,12 @@
             this.載入圖片ToolStripMenuItem.Text = "載入圖片";
             this.載入圖片ToolStripMenuItem.Click += new System.EventHandler(this.載入圖片ToolStripMenuItem_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 24);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(533, 314);
-            this.panel1.TabIndex = 1;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(533, 314);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // 濾鏡ToolStripMenuItem
             // 
             this.濾鏡ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.反向ToolStripMenuItem,
-            this.詼諧ToolStripMenuItem});
+            this.詼諧ToolStripMenuItem,
+            this.模糊ToolStripMenuItem});
             this.濾鏡ToolStripMenuItem.Name = "濾鏡ToolStripMenuItem";
             this.濾鏡ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.濾鏡ToolStripMenuItem.Text = "濾鏡";
@@ -119,6 +104,57 @@
             this.詼諧ToolStripMenuItem.Text = "詼諧";
             this.詼諧ToolStripMenuItem.Click += new System.EventHandler(this.詼諧ToolStripMenuItem_Click);
             // 
+            // 色彩ToolStripMenuItem
+            // 
+            this.色彩ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.亮度ToolStripMenuItem,
+            this.hSVToolStripMenuItem});
+            this.色彩ToolStripMenuItem.Name = "色彩ToolStripMenuItem";
+            this.色彩ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.色彩ToolStripMenuItem.Text = "色彩";
+            // 
+            // 亮度ToolStripMenuItem
+            // 
+            this.亮度ToolStripMenuItem.Name = "亮度ToolStripMenuItem";
+            this.亮度ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.亮度ToolStripMenuItem.Text = "亮度";
+            this.亮度ToolStripMenuItem.Click += new System.EventHandler(this.亮度ToolStripMenuItem_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 24);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(533, 314);
+            this.panel1.TabIndex = 1;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(533, 314);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // 模糊ToolStripMenuItem
+            // 
+            this.模糊ToolStripMenuItem.Name = "模糊ToolStripMenuItem";
+            this.模糊ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.模糊ToolStripMenuItem.Text = "模糊";
+            this.模糊ToolStripMenuItem.Click += new System.EventHandler(this.模糊ToolStripMenuItem_Click);
+            // 
+            // hSVToolStripMenuItem
+            // 
+            this.hSVToolStripMenuItem.Name = "hSVToolStripMenuItem";
+            this.hSVToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.hSVToolStripMenuItem.Text = "HSV";
+            this.hSVToolStripMenuItem.Click += new System.EventHandler(this.HSVToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -127,7 +163,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.menuStrip1.ResumeLayout(false);
@@ -151,6 +187,10 @@
         private System.Windows.Forms.ToolStripMenuItem 濾鏡ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 反向ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 詼諧ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 色彩ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 亮度ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 模糊ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hSVToolStripMenuItem;
     }
 }
 

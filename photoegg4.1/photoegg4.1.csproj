@@ -68,16 +68,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="blurryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="blurryForm.Designer.cs">
+      <DependentUpon>blurryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="brightnessForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="brightnessForm.Designer.cs">
+      <DependentUpon>brightnessForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="HSVForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HSVForm.Designer.cs">
+      <DependentUpon>HSVForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="blurryForm.resx">
+      <DependentUpon>blurryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="brightnessForm.resx">
+      <DependentUpon>brightnessForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HSVForm.resx">
+      <DependentUpon>HSVForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
