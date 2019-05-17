@@ -51,9 +51,9 @@ namespace photoegg4._1
                 else if (func == (int)colorFunction.brightness)
                     Pixel_C.brightness((byte*)MyBmpData.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, -100);
                 else if (func == (int)colorFunction.blurry)
-                    Pixel_C.blurry2((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, 30);
+                    Pixel_C.blurry2((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4,50);
                 else if (func == (int)colorFunction.HSV)
-                    Pixel_C.ConvertHSV((byte*)MyBmpData.Scan0, MyNewBmp.Width, MyNewBmp.Height,0,0,0,4);
+                    Pixel_C.ConvertHSV((byte*)MyBmpData.Scan0, MyNewBmp.Width, MyNewBmp.Height,0,0,0,4,false,0);
             }
             MyNewBmp.UnlockBits(MyBmpData);
             MyNewBmp2.UnlockBits(MyBmpData2);
@@ -84,10 +84,15 @@ namespace photoegg4._1
             pictureBox1.Image = originBitmap[Now_Bitmap];
         }
         private void HSV()
-        {
+        {/*System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();//引用stopwatch物件
+          sw.Reset();//碼表歸零
+          sw.Start();//碼表開始計時*/
             if (Now_Bitmap < 0) return;
             Pixel_Operate(colorFunction.HSV);
             pictureBox1.Image = originBitmap[Now_Bitmap];
+       /*       sw.Stop();//碼錶停止
+
+MessageBox.Show(sw.Elapsed.TotalMilliseconds.ToString());*/
         }
     }
 }

@@ -1,12 +1,18 @@
 ﻿#pragma once
-#include <math.h>  
+#include <math.h> 
+#define BGR2BGR 0
+#define BGR2RGB 1
+#define BGR2RBG 2
+#define BGR2GRB 3
+#define BGR2GBR 4
+#define BGR2BRG 5
 using namespace System;
 
 namespace pix {
 
 	public ref class pixelOperate
 	{
-
+		const double PI = 3.141592653589793238463;
 		// TODO: 請在此新增此類別的方法。
 	public:
 		/*	void colorTo255(unsigned char*, int, int, int);
@@ -196,8 +202,51 @@ namespace pix {
 			}
 			delete[] fp;
 		}
-
-		void ConvertHSV(unsigned char* ptr, int width, int height, int H, int S, int V, int channel)
+		void colorOrder(unsigned char &b, unsigned char &g, unsigned char &r, int order)
+		{
+			unsigned char temp;
+			if (order == BGR2BGR)
+			{
+				return;
+			}
+			else if (order == BGR2BRG)
+			{
+				temp = g;
+				g = r;
+				r = temp;
+			}
+			else if (order == BGR2RGB)
+			{
+				temp = b;
+				b = r;
+				r = temp;
+			}
+			else if (order == BGR2RBG)
+			{
+				temp = b;
+				b = g;
+				g = temp;
+				temp = r;
+				r = g;
+				g = temp;
+			}
+			else if (order == BGR2GRB)
+			{
+				temp = b;
+				b = r;
+				r = temp;
+				temp =g;
+				g = r;
+				r = temp;
+			}
+			else if (order == BGR2GBR)
+			{
+				temp = b;
+				b = g;
+				g = temp;
+			}
+		}
+		void ConvertHSV(unsigned char* ptr, int width, int height, int H, int S, int V, int channel, bool fix, int order)
 		{
 			unsigned char** fp = new unsigned char* [height];
 			int Stride = width * channel, x = 0, y = 0;
@@ -207,7 +256,8 @@ namespace pix {
 			{
 				for (x = 0; x < Stride; x += channel)
 				{
-					BGRToHSV(H, S, V, fp[y][x], fp[y][x + 1], fp[y][x + 2]);
+					colorOrder(fp[y][x], fp[y][x + 1], fp[y][x + 2], order);
+					BGRToHSV(H, S, V, fp[y][x], fp[y][x + 1], fp[y][x + 2], fix);
 				}
 			}
 			delete[] fp;
@@ -223,7 +273,7 @@ namespace pix {
 			return a >= b ? a : b;
 		}
 
-		void BGRToHSV(int H, int S, int V, unsigned char& colorB, unsigned char& colorG, unsigned char& colorR)
+		void BGRToHSV(int H, int S, int V, unsigned char& colorB, unsigned char& colorG, unsigned char& colorR, bool fix)
 		{
 			double delta, min;
 			double h = 0, s, v;
@@ -248,7 +298,14 @@ namespace pix {
 				if (h < 0.0)
 					h = h + 360;
 			}
-			h += H;
+			if (fix == false)
+				h += H;
+			else
+				h = H;
+			if (h < 0.0)
+				h = h + 360;
+			if (h >= 360.0)
+				h = h - 360;
 			s += s * S / 100;
 			if (s > 1.0) s = 1.0;
 			if (s < 0) s = 0;
