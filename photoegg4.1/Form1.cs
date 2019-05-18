@@ -59,7 +59,7 @@ namespace photoegg4._1
                 pictureBox1.Image = a;
                 Now_Bitmap++;
             }
-            emboss(false);
+           // emboss(false);
         }
         public void Pixel_Operate(colorFunction fun)
         {
@@ -112,6 +112,9 @@ namespace photoegg4._1
                     Pixel_C.blurry2((byte*)MyBmpData3.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, value_int_1);
                 else if (func == (int)colorFunction.HSV)
                     Pixel_C.ConvertHSV((byte*)MyBmpData3.Scan0, MyNewBmp.Width, MyNewBmp.Height, value_int_1, value_int_2, value_int_3, 4, value_bool_1, value_int_4);
+                else if (func == (int)colorFunction.emboss)
+                    Pixel_C.emboss((byte*)MyBmpData3.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, value_int_1, value_int_2, value_bool_1);
+
             }
             MyNewBmp.UnlockBits(MyBmpData);
             MyNewBmp2.UnlockBits(MyBmpData2);
@@ -211,6 +214,12 @@ namespace photoegg4._1
         private void HSVToolStripMenuItem_Click(object sender, EventArgs e)
         {
             HSVForm form = new HSVForm(this);
+            form.Show();
+        }
+
+        private void 浮雕ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            embossForm form = new embossForm(this);
             form.Show();
         }
     }
