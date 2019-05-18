@@ -43,7 +43,7 @@ namespace photoegg4._1
         /// 
         /// </summary>
         public bool isTemp = false;
-        public enum colorFunction { colorTo255, colorToGray, brightness, blurry, HSV };
+        public enum colorFunction { colorTo255, colorToGray, brightness, blurry, HSV,pasteImage };
         public Form1()
         {
             InitializeComponent();
@@ -59,6 +59,7 @@ namespace photoegg4._1
                 pictureBox1.Image = a;
                 Now_Bitmap++;
             }
+            pasteImage(false);
         }
         public void Pixel_Operate(colorFunction fun)
         {
@@ -80,6 +81,8 @@ namespace photoegg4._1
                     Pixel_C.blurry2((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, value_int_1);
                 else if (func == (int)colorFunction.HSV)
                     Pixel_C.ConvertHSV((byte*)MyBmpData.Scan0, MyNewBmp.Width, MyNewBmp.Height, value_int_1, value_int_2, value_int_3, 4, value_bool_1, value_int_4);
+                else if (func == (int)colorFunction.pasteImage)
+                    Pixel_C.pasteImage((byte*)MyBmpData.Scan0,(byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, MyNewBmp.Width, MyNewBmp.Height,300,300, 4);
             }
             MyNewBmp.UnlockBits(MyBmpData);
             MyNewBmp2.UnlockBits(MyBmpData2);
@@ -136,6 +139,19 @@ namespace photoegg4._1
             else
             {
                 Pixel_Operate_Temp(colorFunction.brightness);
+            }
+        }
+        public void pasteImage(bool istemp)
+        {
+            if (Now_Bitmap < 0) return;
+            if (istemp == false)
+            {
+                Pixel_Operate(colorFunction.pasteImage);
+                pictureBox1.Image = originBitmap[Now_Bitmap];
+            }
+            else
+            {
+                Pixel_Operate_Temp(colorFunction.pasteImage);
             }
         }
         public void blurry(bool istemp)

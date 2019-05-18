@@ -121,7 +121,33 @@ namespace pix {
 			}
 			delete[] fp;
 		}
-
+		void pasteImage(unsigned char* ptr, unsigned char* ptr2, int width, int height, int width2, int height2, int pasteX, int pasteY, int channel)
+		{
+			unsigned char** fp = new unsigned char* [height];
+			unsigned char** fp2 = new unsigned char* [height2];
+			//const int recSize = ((value * 2 + 1) * (value * 2 + 1));
+			//const int recWidth = value * channel;
+			int Stride = width * channel, x = 0, y = 0;
+			int Stride2 = width2 * channel;
+			for (int j = 0; j < height; j++)
+				fp[j] = ptr + (Stride * j);
+			for (int j = 0; j < height2; j++)
+				fp2[j] = ptr2 + (Stride2 * j);
+			int x2 = 0; int y2 = 0;
+			int pasteXPoint = pasteX * channel;
+			for (y = 0; y < height; y++)
+			{
+				for (x = 0; x < Stride; x += channel)
+				{
+					if (x + pasteXPoint >= Stride || x + pasteXPoint <0 || y + pasteY >= height || y + pasteY <0)continue;
+					fp[y + pasteY][x + pasteXPoint] = fp2[y][x];
+					fp[y + pasteY][x + pasteXPoint + 1] = fp2[y][x + 1];
+					fp[y + pasteY][x + pasteXPoint + 2] = fp2[y][x + 2];
+				}
+			}
+			delete[] fp;
+			delete[] fp2;
+		}
 		void  inline blurry2(unsigned char* ptr, unsigned char* ptr2, int width, int height, int channel, int value)
 		{
 			unsigned char** fp = new unsigned char* [height];
@@ -202,7 +228,7 @@ namespace pix {
 			}
 			delete[] fp;
 		}
-		void colorOrder(unsigned char &b, unsigned char &g, unsigned char &r, int order)
+		void colorOrder(unsigned char& b, unsigned char& g, unsigned char& r, int order)
 		{
 			unsigned char temp;
 			if (order == BGR2BGR)
@@ -235,7 +261,7 @@ namespace pix {
 				temp = b;
 				b = r;
 				r = temp;
-				temp =g;
+				temp = g;
 				g = r;
 				r = temp;
 			}
