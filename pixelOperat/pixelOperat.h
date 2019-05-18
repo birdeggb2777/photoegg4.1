@@ -125,8 +125,6 @@ namespace pix {
 		{
 			unsigned char** fp = new unsigned char* [height];
 			unsigned char** fp2 = new unsigned char* [height2];
-			//const int recSize = ((value * 2 + 1) * (value * 2 + 1));
-			//const int recWidth = value * channel;
 			int Stride = width * channel, x = 0, y = 0;
 			int Stride2 = width2 * channel;
 			for (int j = 0; j < height; j++)
@@ -135,14 +133,77 @@ namespace pix {
 				fp2[j] = ptr2 + (Stride2 * j);
 			int x2 = 0; int y2 = 0;
 			int pasteXPoint = pasteX * channel;
-			for (y = 0; y < height; y++)
+			for (y = 0, y2 = 0; y < height, y2 < height2; y++, y2++)
 			{
-				for (x = 0; x < Stride; x += channel)
+				for (x = 0, x2 = 0; x < Stride, x2 < Stride2; x += channel, x2 += channel)
 				{
-					if (x + pasteXPoint >= Stride || x + pasteXPoint <0 || y + pasteY >= height || y + pasteY <0)continue;
-					fp[y + pasteY][x + pasteXPoint] = fp2[y][x];
-					fp[y + pasteY][x + pasteXPoint + 1] = fp2[y][x + 1];
-					fp[y + pasteY][x + pasteXPoint + 2] = fp2[y][x + 2];
+					if (x + pasteXPoint >= Stride || x + pasteXPoint < 0 || y + pasteY >= height || y + pasteY < 0)continue;
+					if (x2 >= Stride2 || x2 < 0 || y2 >= height2 || y2 < 0)continue;
+					fp[y + pasteY][x + pasteXPoint] = fp2[y2][x2];
+					fp[y + pasteY][x + pasteXPoint + 1] = fp2[y2][x2 + 1];
+					fp[y + pasteY][x + pasteXPoint + 2] = fp2[y2][x2 + 2];
+				}
+			}
+			delete[] fp;
+			delete[] fp2;
+		}
+		void emboss(unsigned char* ptr, unsigned char* ptr2, int width, int height, int channel, int pasteY, int pasteX, bool isgray)
+		{
+			//int pasteY = 5;
+			//int pasteX = 5;
+			unsigned char** fp = new unsigned char* [height];
+			unsigned char** fp2 = new unsigned char* [height];
+			int Stride = width * channel, x = 0, y = 0;
+			for (int j = 0; j < height; j++)
+				fp[j] = ptr + (Stride * j);
+			for (int j = 0; j < height; j++)
+				fp2[j] = ptr2 + (Stride * j);
+			int x2 = 0; int y2 = 0;
+			int pasteXPoint = pasteX * channel;
+			unsigned char gray = 0;
+			int bb = 0, gg = 0, rr = 0;
+			int tempB = 0, tempG = 0, tempR = 0;
+			if (isgray == false)
+			{
+				for (y = 0; y < height; y++)
+				{
+					for (x = 0; x < Stride; x += channel)
+					{
+						if (x + pasteXPoint >= Stride || x + pasteXPoint < 0 || y + pasteY >= height || y + pasteY < 0)continue;
+						gray = (fp2[y + pasteY][x + pasteXPoint] + fp2[y + pasteY][x + pasteXPoint + 1] + fp2[y + pasteY][x + pasteXPoint + 2]) / 3;
+						tempB = 255 - (gray);
+						tempG = 255 - (gray);
+						tempR = 255 - (gray);
+						bb = ((tempB)+fp[y][x]) / 2;
+						gg = ((tempG)+fp[y][x + 1]) / 2;
+						rr = ((tempR)+fp[y][x + 2]) / 2;
+						gray = (bb + gg + rr) / 3;
+						bb = bb * 2 - gray;
+						gg = gg * 2 - gray;
+						rr = rr * 2 - gray;
+						if (rr > 255)rr = 255;
+						if (gg > 255)gg = 255;
+						if (bb > 255)bb = 255;
+						if (rr < 0)rr = 0;
+						if (gg < 0)gg = 0;
+						if (bb < 0)bb = 0;
+						fp[y][x] = bb;
+						fp[y][x + 1] = gg;
+						fp[y][x + 2] = rr;
+					}
+				}
+			}
+			else
+			{
+				for (y = 0; y < height; y++)
+				{
+					for (x = 0; x < Stride; x += channel)
+					{
+						if (x + pasteXPoint >= Stride || x + pasteXPoint < 0 || y + pasteY >= height || y + pasteY < 0)continue;
+						fp[y + pasteY][x + pasteXPoint] = ((255 - fp2[y][x]) + fp[y + pasteY][x + pasteXPoint]) / 2;
+						fp[y + pasteY][x + pasteXPoint + 1] = ((255 - fp2[y][x + 1]) + fp[y + pasteY][x + pasteXPoint + 1]) / 2;
+						fp[y + pasteY][x + pasteXPoint + 2] = ((255 - fp2[y][x + 2]) + fp[y + pasteY][x + pasteXPoint + 2]) / 2;
+					}
 				}
 			}
 			delete[] fp;

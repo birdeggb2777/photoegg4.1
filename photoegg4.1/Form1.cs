@@ -43,7 +43,7 @@ namespace photoegg4._1
         /// 
         /// </summary>
         public bool isTemp = false;
-        public enum colorFunction { colorTo255, colorToGray, brightness, blurry, HSV,pasteImage };
+        public enum colorFunction { colorTo255, colorToGray, brightness, blurry, HSV,pasteImage , emboss };
         public Form1()
         {
             InitializeComponent();
@@ -59,16 +59,17 @@ namespace photoegg4._1
                 pictureBox1.Image = a;
                 Now_Bitmap++;
             }
-            pasteImage(false);
+            emboss(false);
         }
         public void Pixel_Operate(colorFunction fun)
         {
             int func = (int)fun;
             Bitmap MyNewBmp = (Bitmap)originBitmap[Now_Bitmap];
-            Bitmap MyNewBmp2 = (Bitmap)MyNewBmp.Clone();
+            Bitmap MyNewBmp2 = (Bitmap)originBitmap[Now_Bitmap].Clone();
             Rectangle MyRec = new Rectangle(0, 0, MyNewBmp.Width, MyNewBmp.Height);
+            Rectangle MyRec2 = new Rectangle(0, 0, MyNewBmp2.Width, MyNewBmp2.Height);
             BitmapData MyBmpData = MyNewBmp.LockBits(MyRec, ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
-            BitmapData MyBmpData2 = MyNewBmp2.LockBits(MyRec, ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
+            BitmapData MyBmpData2 = MyNewBmp2.LockBits(MyRec2, ImageLockMode.ReadWrite, PixelFormat.Format32bppArgb);
             unsafe
             {
                 if (func == (int)colorFunction.colorTo255)
@@ -82,7 +83,9 @@ namespace photoegg4._1
                 else if (func == (int)colorFunction.HSV)
                     Pixel_C.ConvertHSV((byte*)MyBmpData.Scan0, MyNewBmp.Width, MyNewBmp.Height, value_int_1, value_int_2, value_int_3, 4, value_bool_1, value_int_4);
                 else if (func == (int)colorFunction.pasteImage)
-                    Pixel_C.pasteImage((byte*)MyBmpData.Scan0,(byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, MyNewBmp.Width, MyNewBmp.Height,300,300, 4);
+                    Pixel_C.pasteImage((byte*)MyBmpData.Scan0,(byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, MyNewBmp2.Width, MyNewBmp2.Height,300,300, 4);
+                else if (func == (int)colorFunction.emboss)
+                    Pixel_C.emboss((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4,-5,5,false);
             }
             MyNewBmp.UnlockBits(MyBmpData);
             MyNewBmp2.UnlockBits(MyBmpData2);
@@ -180,7 +183,19 @@ namespace photoegg4._1
                 Pixel_Operate_Temp(colorFunction.HSV);
             }
         }
-
+        public void emboss(bool istemp)
+        {
+            if (Now_Bitmap < 0) return;
+            if (istemp == false)
+            {
+                Pixel_Operate(colorFunction.emboss);
+                pictureBox1.Image = originBitmap[Now_Bitmap];
+            }
+            else
+            {
+                Pixel_Operate_Temp(colorFunction.emboss);
+            }
+        }
         private void 亮度ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             brightnessForm form = new brightnessForm(this);
