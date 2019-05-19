@@ -147,6 +147,55 @@ namespace pix {
 			delete[] fp;
 			delete[] fp2;
 		}
+		void mosaic(unsigned char* ptr, unsigned char* ptr2, int width, int height,int channel ,int value)
+		{
+			unsigned char** fp = new unsigned char* [height];
+			unsigned char** fp2 = new unsigned char* [height];
+			const int recSize = value*value;
+			//const int recWidth = value * channel;
+			int Stride = width * channel, x = 0, y = 0;
+			for (int j = 0; j < height; j++)
+				fp[j] = ptr + (Stride * j);
+			for (int j = 0; j < height; j++)
+				fp2[j] = ptr2 + (Stride * j);
+			int x2 = 0; int y2 = 0;
+			int countB = 0;
+			int countG = 0;
+			int countR = 0;
+			for (y = 0; y < height; y+=value)
+			{
+				for (x = 0; x < Stride; x += channel*value)
+				{
+					for (y2 = 0; y2 < value; y2++)
+					{
+						for (x2 = 0; x2 < value*channel; x2 += channel)
+						{
+							if (y + y2 < 0 || y + y2 >= height || x + x2 < 0 || x + x2 >= Stride)
+								continue;
+							countB += fp2[y + y2][x + x2];
+							countG += fp2[y + y2][x + x2 + 1];
+							countR += fp2[y + y2][x + x2 + 2];
+						}
+					}
+					countB /= recSize;
+					countG /= recSize;
+					countR /= recSize;
+					for (y2 = 0; y2 < value; y2++)
+					{
+						for (x2 = 0; x2 < value*channel; x2 += channel)
+						{
+							if (y + y2 < 0 || y + y2 >= height || x + x2 < 0 || x + x2 >= Stride)
+								continue;
+							fp[y + y2][x + x2] = countB;
+							fp[y + y2][x + x2 + 1] = countG;
+							fp[y + y2][x + x2 + 2] = countR;
+						}
+					}
+					countB = countG = countR = 0;
+				}
+			}
+			delete[] fp;
+		}
 		void emboss(unsigned char* ptr, unsigned char* ptr2, int width, int height, int channel, int pasteY, int pasteX, bool isgray)
 		{
 			//int pasteY = 5;

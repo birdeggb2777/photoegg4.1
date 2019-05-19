@@ -37,13 +37,14 @@
             this.反向ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.詼諧ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.模糊ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.風格化ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.浮雕ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.色彩ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.亮度ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.風格化ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.浮雕ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.馬賽克ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -88,7 +89,8 @@
             this.反向ToolStripMenuItem,
             this.詼諧ToolStripMenuItem,
             this.模糊ToolStripMenuItem,
-            this.風格化ToolStripMenuItem});
+            this.風格化ToolStripMenuItem,
+            this.馬賽克ToolStripMenuItem});
             this.濾鏡ToolStripMenuItem.Name = "濾鏡ToolStripMenuItem";
             this.濾鏡ToolStripMenuItem.Size = new System.Drawing.Size(53, 25);
             this.濾鏡ToolStripMenuItem.Text = "濾鏡";
@@ -113,6 +115,21 @@
             this.模糊ToolStripMenuItem.Size = new System.Drawing.Size(223, 28);
             this.模糊ToolStripMenuItem.Text = "模糊";
             this.模糊ToolStripMenuItem.Click += new System.EventHandler(this.模糊ToolStripMenuItem_Click);
+            // 
+            // 風格化ToolStripMenuItem
+            // 
+            this.風格化ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.浮雕ToolStripMenuItem});
+            this.風格化ToolStripMenuItem.Name = "風格化ToolStripMenuItem";
+            this.風格化ToolStripMenuItem.Size = new System.Drawing.Size(223, 28);
+            this.風格化ToolStripMenuItem.Text = "風格化";
+            // 
+            // 浮雕ToolStripMenuItem
+            // 
+            this.浮雕ToolStripMenuItem.Name = "浮雕ToolStripMenuItem";
+            this.浮雕ToolStripMenuItem.Size = new System.Drawing.Size(117, 28);
+            this.浮雕ToolStripMenuItem.Text = "浮雕";
+            this.浮雕ToolStripMenuItem.Click += new System.EventHandler(this.浮雕ToolStripMenuItem_Click);
             // 
             // 色彩ToolStripMenuItem
             // 
@@ -156,20 +173,12 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // 風格化ToolStripMenuItem
+            // 馬賽克ToolStripMenuItem
             // 
-            this.風格化ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.浮雕ToolStripMenuItem});
-            this.風格化ToolStripMenuItem.Name = "風格化ToolStripMenuItem";
-            this.風格化ToolStripMenuItem.Size = new System.Drawing.Size(223, 28);
-            this.風格化ToolStripMenuItem.Text = "風格化";
-            // 
-            // 浮雕ToolStripMenuItem
-            // 
-            this.浮雕ToolStripMenuItem.Name = "浮雕ToolStripMenuItem";
-            this.浮雕ToolStripMenuItem.Size = new System.Drawing.Size(223, 28);
-            this.浮雕ToolStripMenuItem.Text = "浮雕";
-            this.浮雕ToolStripMenuItem.Click += new System.EventHandler(this.浮雕ToolStripMenuItem_Click);
+            this.馬賽克ToolStripMenuItem.Name = "馬賽克ToolStripMenuItem";
+            this.馬賽克ToolStripMenuItem.Size = new System.Drawing.Size(223, 28);
+            this.馬賽克ToolStripMenuItem.Text = "馬賽克";
+            this.馬賽克ToolStripMenuItem.Click += new System.EventHandler(this.馬賽克ToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -208,6 +217,7 @@
         private System.Windows.Forms.ToolStripMenuItem hSVToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 風格化ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 浮雕ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 馬賽克ToolStripMenuItem;
     }
 }
 

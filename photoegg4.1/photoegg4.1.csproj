@@ -98,6 +98,12 @@
     <Compile Include="HSVForm.Designer.cs">
       <DependentUpon>HSVForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="mosaicForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="mosaicForm.Designer.cs">
+      <DependentUpon>mosaicForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="blurryForm.resx">
@@ -114,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="HSVForm.resx">
       <DependentUpon>HSVForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mosaicForm.resx">
+      <DependentUpon>mosaicForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
