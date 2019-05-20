@@ -39,12 +39,15 @@
             this.模糊ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.風格化ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.浮雕ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.馬賽克ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.色彩ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.亮度ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.馬賽克ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.影像ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.水平翻轉ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.垂直翻轉ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -60,7 +63,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.檔案ToolStripMenuItem,
             this.濾鏡ToolStripMenuItem,
-            this.色彩ToolStripMenuItem});
+            this.色彩ToolStripMenuItem,
+            this.影像ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
@@ -98,21 +102,21 @@
             // 反向ToolStripMenuItem
             // 
             this.反向ToolStripMenuItem.Name = "反向ToolStripMenuItem";
-            this.反向ToolStripMenuItem.Size = new System.Drawing.Size(223, 28);
+            this.反向ToolStripMenuItem.Size = new System.Drawing.Size(133, 28);
             this.反向ToolStripMenuItem.Text = "反向";
             this.反向ToolStripMenuItem.Click += new System.EventHandler(this.反向ToolStripMenuItem_Click);
             // 
             // 詼諧ToolStripMenuItem
             // 
             this.詼諧ToolStripMenuItem.Name = "詼諧ToolStripMenuItem";
-            this.詼諧ToolStripMenuItem.Size = new System.Drawing.Size(223, 28);
+            this.詼諧ToolStripMenuItem.Size = new System.Drawing.Size(133, 28);
             this.詼諧ToolStripMenuItem.Text = "詼諧";
             this.詼諧ToolStripMenuItem.Click += new System.EventHandler(this.詼諧ToolStripMenuItem_Click);
             // 
             // 模糊ToolStripMenuItem
             // 
             this.模糊ToolStripMenuItem.Name = "模糊ToolStripMenuItem";
-            this.模糊ToolStripMenuItem.Size = new System.Drawing.Size(223, 28);
+            this.模糊ToolStripMenuItem.Size = new System.Drawing.Size(133, 28);
             this.模糊ToolStripMenuItem.Text = "模糊";
             this.模糊ToolStripMenuItem.Click += new System.EventHandler(this.模糊ToolStripMenuItem_Click);
             // 
@@ -121,7 +125,7 @@
             this.風格化ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.浮雕ToolStripMenuItem});
             this.風格化ToolStripMenuItem.Name = "風格化ToolStripMenuItem";
-            this.風格化ToolStripMenuItem.Size = new System.Drawing.Size(223, 28);
+            this.風格化ToolStripMenuItem.Size = new System.Drawing.Size(133, 28);
             this.風格化ToolStripMenuItem.Text = "風格化";
             // 
             // 浮雕ToolStripMenuItem
@@ -130,6 +134,13 @@
             this.浮雕ToolStripMenuItem.Size = new System.Drawing.Size(117, 28);
             this.浮雕ToolStripMenuItem.Text = "浮雕";
             this.浮雕ToolStripMenuItem.Click += new System.EventHandler(this.浮雕ToolStripMenuItem_Click);
+            // 
+            // 馬賽克ToolStripMenuItem
+            // 
+            this.馬賽克ToolStripMenuItem.Name = "馬賽克ToolStripMenuItem";
+            this.馬賽克ToolStripMenuItem.Size = new System.Drawing.Size(133, 28);
+            this.馬賽克ToolStripMenuItem.Text = "馬賽克";
+            this.馬賽克ToolStripMenuItem.Click += new System.EventHandler(this.馬賽克ToolStripMenuItem_Click);
             // 
             // 色彩ToolStripMenuItem
             // 
@@ -173,12 +184,28 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // 馬賽克ToolStripMenuItem
+            // 影像ToolStripMenuItem
             // 
-            this.馬賽克ToolStripMenuItem.Name = "馬賽克ToolStripMenuItem";
-            this.馬賽克ToolStripMenuItem.Size = new System.Drawing.Size(223, 28);
-            this.馬賽克ToolStripMenuItem.Text = "馬賽克";
-            this.馬賽克ToolStripMenuItem.Click += new System.EventHandler(this.馬賽克ToolStripMenuItem_Click);
+            this.影像ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.水平翻轉ToolStripMenuItem,
+            this.垂直翻轉ToolStripMenuItem});
+            this.影像ToolStripMenuItem.Name = "影像ToolStripMenuItem";
+            this.影像ToolStripMenuItem.Size = new System.Drawing.Size(53, 25);
+            this.影像ToolStripMenuItem.Text = "影像";
+            // 
+            // 水平翻轉ToolStripMenuItem
+            // 
+            this.水平翻轉ToolStripMenuItem.Name = "水平翻轉ToolStripMenuItem";
+            this.水平翻轉ToolStripMenuItem.Size = new System.Drawing.Size(223, 28);
+            this.水平翻轉ToolStripMenuItem.Text = "水平翻轉";
+            this.水平翻轉ToolStripMenuItem.Click += new System.EventHandler(this.水平翻轉ToolStripMenuItem_Click);
+            // 
+            // 垂直翻轉ToolStripMenuItem
+            // 
+            this.垂直翻轉ToolStripMenuItem.Name = "垂直翻轉ToolStripMenuItem";
+            this.垂直翻轉ToolStripMenuItem.Size = new System.Drawing.Size(223, 28);
+            this.垂直翻轉ToolStripMenuItem.Text = "垂直翻轉";
+            this.垂直翻轉ToolStripMenuItem.Click += new System.EventHandler(this.垂直翻轉ToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -218,6 +245,9 @@
         private System.Windows.Forms.ToolStripMenuItem 風格化ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 浮雕ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 馬賽克ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 影像ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 水平翻轉ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 垂直翻轉ToolStripMenuItem;
     }
 }
 
