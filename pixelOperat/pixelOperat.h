@@ -54,6 +54,45 @@ namespace pix {
 			}
 			delete[] fp;
 		}
+		void horizontalFlip(unsigned char* ptr, unsigned char* ptr2, int width, int height, int channel)
+		{
+			unsigned char** fp = new unsigned char* [height];
+			unsigned char** fp2 = new unsigned char* [height];
+			int Stride = width * channel, x = 0, y = 0;
+			for (int j = 0; j < height; j++)
+				fp[j] = ptr + (Stride * j);
+			for (int j = 0; j < height; j++)
+				fp2[j] = ptr2 + (Stride * j);
+			for (y = 0; y < height; y++)
+			{
+				for (x = 0; x < Stride; x += channel)
+				{
+					fp[y][x] = fp2[y][Stride - x];
+					fp[y][x + 1] = fp2[y][Stride - x + 1];
+					fp[y][x + 2] = fp2[y][Stride - x + 2];
+				}
+			}
+		}
+		void verticalFlip(unsigned char* ptr, unsigned char* ptr2, int width, int height, int channel)
+		{
+			unsigned char** fp = new unsigned char* [height];
+			unsigned char** fp2 = new unsigned char* [height];
+			int Stride = width * channel, x = 0, y = 0;
+			for (int j = 0; j < height; j++)
+				fp[j] = ptr + (Stride * j);
+			for (int j = 0; j < height; j++)
+				fp2[j] = ptr2 + (Stride * j);
+			for (y = 0; y < height; y++)
+			{
+				for (x = 0; x < Stride; x += channel)
+				{
+					fp[y][x] = fp2[(height - 1) - y][x];
+					fp[y][x + 1] = fp2[(height - 1) - y][x + 1];
+					fp[y][x + 2] = fp2[(height - 1) - y][x + 2];
+				}
+			}
+
+		}
 		void  inline brightness(unsigned char* ptr, int width, int height, int channel, int value)
 		{
 			unsigned char** fp = new unsigned char* [height];
@@ -147,11 +186,11 @@ namespace pix {
 			delete[] fp;
 			delete[] fp2;
 		}
-		void mosaic(unsigned char* ptr, unsigned char* ptr2, int width, int height,int channel ,int value)
+		void mosaic(unsigned char* ptr, unsigned char* ptr2, int width, int height, int channel, int value)
 		{
 			unsigned char** fp = new unsigned char* [height];
 			unsigned char** fp2 = new unsigned char* [height];
-			const int recSize = value*value;
+			const int recSize = value * value;
 			//const int recWidth = value * channel;
 			int Stride = width * channel, x = 0, y = 0;
 			for (int j = 0; j < height; j++)
@@ -162,13 +201,13 @@ namespace pix {
 			int countB = 0;
 			int countG = 0;
 			int countR = 0;
-			for (y = 0; y < height; y+=value)
+			for (y = 0; y < height; y += value)
 			{
-				for (x = 0; x < Stride; x += channel*value)
+				for (x = 0; x < Stride; x += channel * value)
 				{
 					for (y2 = 0; y2 < value; y2++)
 					{
-						for (x2 = 0; x2 < value*channel; x2 += channel)
+						for (x2 = 0; x2 < value * channel; x2 += channel)
 						{
 							if (y + y2 < 0 || y + y2 >= height || x + x2 < 0 || x + x2 >= Stride)
 								continue;
@@ -182,7 +221,7 @@ namespace pix {
 					countR /= recSize;
 					for (y2 = 0; y2 < value; y2++)
 					{
-						for (x2 = 0; x2 < value*channel; x2 += channel)
+						for (x2 = 0; x2 < value * channel; x2 += channel)
 						{
 							if (y + y2 < 0 || y + y2 >= height || x + x2 < 0 || x + x2 >= Stride)
 								continue;

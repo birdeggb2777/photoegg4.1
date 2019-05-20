@@ -43,7 +43,7 @@ namespace photoegg4._1
         /// 
         /// </summary>
         public bool isTemp = false;
-        public enum colorFunction { colorTo255, colorToGray, brightness, blurry, HSV,pasteImage , emboss, mosaic };
+        public enum colorFunction { colorTo255, colorToGray, brightness, blurry, HSV, pasteImage, emboss, mosaic, horizontalFlip, verticalFlip };
         public Form1()
         {
             InitializeComponent();
@@ -82,12 +82,15 @@ namespace photoegg4._1
                 else if (func == (int)colorFunction.HSV)
                     Pixel_C.ConvertHSV((byte*)MyBmpData.Scan0, MyNewBmp.Width, MyNewBmp.Height, value_int_1, value_int_2, value_int_3, 4, value_bool_1, value_int_4);
                 else if (func == (int)colorFunction.pasteImage)
-                    Pixel_C.pasteImage((byte*)MyBmpData.Scan0,(byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, MyNewBmp2.Width, MyNewBmp2.Height,300,300, 4);
+                    Pixel_C.pasteImage((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, MyNewBmp2.Width, MyNewBmp2.Height, 300, 300, 4);
                 else if (func == (int)colorFunction.emboss)
-                    Pixel_C.emboss((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4,-5,5,false);
+                    Pixel_C.emboss((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, -5, 5, false);
                 else if (func == (int)colorFunction.mosaic)
                     Pixel_C.mosaic((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, value_int_1);
-
+                else if (func == (int)colorFunction.horizontalFlip)
+                    Pixel_C.horizontalFlip((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4);
+                else if (func == (int)colorFunction.verticalFlip)
+                    Pixel_C.verticalFlip((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4);
 
             }
             MyNewBmp.UnlockBits(MyBmpData);
@@ -132,7 +135,18 @@ namespace photoegg4._1
             Pixel_Operate(colorFunction.colorTo255);
             pictureBox1.Image = originBitmap[Now_Bitmap];
         }
-
+        private void flipX()
+        {
+            if (Now_Bitmap < 0) return;
+            Pixel_Operate(colorFunction.horizontalFlip);
+            pictureBox1.Image = originBitmap[Now_Bitmap];
+        }
+        private void flipY()
+        {
+            if (Now_Bitmap < 0) return;
+            Pixel_Operate(colorFunction.verticalFlip);
+            pictureBox1.Image = originBitmap[Now_Bitmap];
+        }
         private void 詼諧ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (Now_Bitmap < 0) return;
