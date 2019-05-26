@@ -85,7 +85,7 @@ namespace photoegg4._1
                 else if (func == (int)colorFunction.pasteImage)
                     Pixel_C.pasteImage((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, MyNewBmp2.Width, MyNewBmp2.Height, 300, 300, 4);
                 else if (func == (int)colorFunction.emboss)
-                    Pixel_C.emboss((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, -5, 5, false);
+                    Pixel_C.emboss((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, value_int_1, value_int_2, value_bool_1);
                 else if (func == (int)colorFunction.mosaic)
                     Pixel_C.mosaic((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, value_int_1);
                 else if (func == (int)colorFunction.horizontalFlip)
@@ -93,7 +93,11 @@ namespace photoegg4._1
                 else if (func == (int)colorFunction.verticalFlip)
                     Pixel_C.verticalFlip((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4);
                 else if (func == (int)colorFunction.tile)
+<<<<<<< HEAD
                     Pixel_C.tile((byte*)MyBmpData.Scan0,  MyNewBmp.Width, MyNewBmp.Height, 4,20,10);
+=======
+                    Pixel_C.tile((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4,20,10);
+>>>>>>> c0a8e3419ffba74fc05f5ddbffadf2f5700fe85a
 
 
             }
@@ -127,7 +131,11 @@ namespace photoegg4._1
                 else if (func == (int)colorFunction.mosaic)
                     Pixel_C.mosaic((byte*)MyBmpData3.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, value_int_1);
                 else if (func == (int)colorFunction.tile)
+<<<<<<< HEAD
                     Pixel_C.tile((byte*)MyBmpData3.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, value_int_1, value_int_2);
+=======
+                    Pixel_C.tile((byte*)MyBmpData3.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, value_int_1, value_int_2);
+>>>>>>> c0a8e3419ffba74fc05f5ddbffadf2f5700fe85a
             }
             MyNewBmp.UnlockBits(MyBmpData);
             MyNewBmp2.UnlockBits(MyBmpData2);
@@ -279,10 +287,27 @@ namespace photoegg4._1
             form.Show();
         }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c0a8e3419ffba74fc05f5ddbffadf2f5700fe85a
         private void 磁磚ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tileForm form = new tileForm(this);
             form.Show();
+<<<<<<< HEAD
+=======
+=======
+        private void 水平翻轉ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            flipX();
+        }
+
+        private void 垂直翻轉ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            flipY();
+>>>>>>> 807509283792c2dd5577c3fff585c591a8688e23
+>>>>>>> c0a8e3419ffba74fc05f5ddbffadf2f5700fe85a
         }
     }
 }

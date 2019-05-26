@@ -186,7 +186,11 @@ namespace pix {
 			delete[] fp;
 			delete[] fp2;
 		}
+<<<<<<< HEAD
 		void tile(unsigned char* ptr, int width, int height, int channel, int value,int value2)
+=======
+		void tile(unsigned char* ptr, unsigned char* ptr2, int width, int height, int channel, int value,int value2)
+>>>>>>> c0a8e3419ffba74fc05f5ddbffadf2f5700fe85a
 		{
 			unsigned char** fp = new unsigned char* [height];
 			const int recSize = value * value;
