@@ -43,7 +43,7 @@ namespace photoegg4._1
         /// 
         /// </summary>
         public bool isTemp = false;
-        public enum colorFunction { colorTo255, colorToGray, brightness, blurry, HSV, pasteImage, emboss, mosaic, horizontalFlip, verticalFlip };
+        public enum colorFunction { colorTo255, colorToGray, brightness, blurry, HSV, pasteImage, emboss, mosaic, horizontalFlip, verticalFlip,tile };
         public Form1()
         {
             InitializeComponent();
@@ -58,6 +58,7 @@ namespace photoegg4._1
                 originBitmap.Add(a);
                 pictureBox1.Image = a;
                 Now_Bitmap++;
+                tile(false);
             }
         }
         public void Pixel_Operate(colorFunction fun)
@@ -91,6 +92,9 @@ namespace photoegg4._1
                     Pixel_C.horizontalFlip((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4);
                 else if (func == (int)colorFunction.verticalFlip)
                     Pixel_C.verticalFlip((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4);
+                else if (func == (int)colorFunction.tile)
+                    Pixel_C.tile((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4,20);
+
 
             }
             MyNewBmp.UnlockBits(MyBmpData);
@@ -146,6 +150,19 @@ namespace photoegg4._1
             if (Now_Bitmap < 0) return;
             Pixel_Operate(colorFunction.verticalFlip);
             pictureBox1.Image = originBitmap[Now_Bitmap];
+        }
+        public void tile(bool istemp)
+        {
+            if (Now_Bitmap < 0) return;
+            if (istemp == false)
+            {
+                Pixel_Operate(colorFunction.tile);
+                pictureBox1.Image = originBitmap[Now_Bitmap];
+            }
+            else
+            {
+                Pixel_Operate_Temp(colorFunction.tile);
+            }
         }
         private void 詼諧ToolStripMenuItem_Click(object sender, EventArgs e)
         {

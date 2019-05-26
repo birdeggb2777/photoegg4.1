@@ -186,6 +186,112 @@ namespace pix {
 			delete[] fp;
 			delete[] fp2;
 		}
+		void tile(unsigned char* ptr, unsigned char* ptr2, int width, int height, int channel, int value)
+		{
+			int value2 = 5;
+			unsigned char** fp = new unsigned char* [height];
+			unsigned char** fp2 = new unsigned char* [height];
+			const int recSize = value * value;
+			int Stride = width * channel, x = 0, y = 0;
+			for (int j = 0; j < height; j++)
+				fp[j] = ptr + (Stride * j);
+			for (int j = 0; j < height; j++)
+				fp2[j] = ptr2 + (Stride * j);
+			int x2 = 0; int y2 = 0;
+			int B = 0;
+			int G = 0;
+			int R = 0;
+			for (y = 0; y < height; y += value)
+			{
+				for (x = 0; x < Stride; x += channel * value)
+				{
+					for (y2 = 0; y2 <= value; y2++)
+					{
+						for (x2 = 0; x2 <= value2 * channel; x2 += channel)
+						{
+							if (y + y2 < 0 || y + y2 >= height || x + x2 < 0 || x + x2 >= Stride)
+								continue;
+							B = fp[y + y2][x + x2] * (x2 / channel) / value2 + 255 * (value2 - x2 / 4) / value2;
+							G = fp[y + y2][x + x2 + 1] * (x2 / channel) / value2 + 255 * (value2 - x2 / 4) / value2;
+							R = fp[y + y2][x + x2 + 2] * (x2 / channel) / value2 + 255 * (value2 - x2 / 4) / value2;
+							if (B > 255)B = 255;
+							if (B < 0) B = 0;
+							if (G > 255)G = 255;
+							if (G < 0) G = 0;
+							if (R > 255)R = 255;
+							if (R < 0) R = 0;
+							fp[y + y2][x + x2] = B;
+							fp[y + y2][x + x2 + 1] = G;
+							fp[y + y2][x + x2 + 2] = R;
+						}
+					}
+					for (y2 = 0; y2 <= value2; y2++)
+					{
+						for (x2 = 0; x2 <= value * channel; x2 += channel)
+						{
+							if (y + y2 < 0 || y + y2 >= height || x + x2 < 0 || x + x2 >= Stride)
+								continue;
+							B = fp[y + y2][x + x2] * (y2 ) / value2 + 255 * (value2 - y2 ) / value2;
+							G = fp[y + y2][x + x2 + 1] * (y2 ) / value2 + 255 * (value2 - y2 ) / value2;
+							R = fp[y + y2][x + x2 + 2] * (y2 ) / value2 + 255 * (value2 - y2 ) / value2;
+							if (B > 255)B = 255;
+							if (B < 0) B = 0;
+							if (G > 255)G = 255;
+							if (G < 0) G = 0;
+							if (R > 255)R = 255;
+							if (R < 0) R = 0;
+							fp[y + y2][x + x2] = B;
+							fp[y + y2][x + x2 + 1] = G;
+							fp[y + y2][x + x2 + 2] = R;
+
+						}
+					}
+					for (y2 = 0; y2 <= value; y2++)
+					{
+						for (x2 = (value-value2) * channel;x2<=value*channel; x2 += channel)
+						{
+							if (y + y2 < 0 || y + y2 >= height || x + x2 < 0 || x + x2 >= Stride)
+								continue;
+							int temptra = x2 - ((value-value2) * channel);
+							B = fp[y + y2][x + x2] *   (value2- temptra/channel)/value2 +  (temptra / channel) / value2;
+							G = fp[y + y2][x + x2 + 1] * (value2 - temptra / channel) / value2 + (temptra / channel) / value2;
+							R = fp[y + y2][x + x2 + 2] * (value2 - temptra / channel) / value2 +  (temptra / channel) / value2;
+							if (B > 255)B = 255;
+							if (B < 0) B = 0;
+							if (G > 255)G = 255;
+							if (G < 0) G = 0;
+							if (R > 255)R = 255;
+							if (R < 0) R = 0;
+							fp[y + y2][x + x2] = B;
+							fp[y + y2][x + x2 + 1] = G;
+							fp[y + y2][x + x2 + 2] = R;
+						}
+					}
+					for (y2 = (value - value2); y2 <= value; y2++)
+					{
+						for (x2 = 0; x2 <= value * channel; x2 += channel)
+						{
+							if (y + y2 < 0 || y + y2 >= height || x + x2 < 0 || x + x2 >= Stride)
+								continue;
+							int temptra =( y2 - (value - value2)) * channel;
+							B = fp[y + y2][x + x2] * (value2 - temptra / channel) / value2 + (temptra / channel) / value2;
+							G = fp[y + y2][x + x2 + 1] * (value2 - temptra / channel) / value2 + (temptra / channel) / value2;
+							R = fp[y + y2][x + x2 + 2] * (value2 - temptra / channel) / value2 + (temptra / channel) / value2;
+							if (B > 255)B = 255;
+							if (B < 0) B = 0;
+							if (G > 255)G = 255;
+							if (G < 0) G = 0;
+							if (R > 255)R = 255;
+							if (R < 0) R = 0;
+							fp[y + y2][x + x2] = B;
+							fp[y + y2][x + x2 + 1] = G;
+							fp[y + y2][x + x2 + 2] = R;
+						}
+					}
+
+				}
+			}
+		}
 		void mosaic(unsigned char* ptr, unsigned char* ptr2, int width, int height, int channel, int value)
 		{
 			unsigned char** fp = new unsigned char* [height];
@@ -629,3 +735,53 @@ void blurry(unsigned char* ptr, int width, int height, int channel, int value)
 
 		}
 */
+/*麵包版
+void tile(unsigned char* ptr, unsigned char* ptr2, int width, int height, int channel, int value)
+{
+	int value2 = 5;
+	unsigned char** fp = new unsigned char* [height];
+	unsigned char** fp2 = new unsigned char* [height];
+	const int recSize = value * value;
+	int Stride = width * channel, x = 0, y = 0;
+	for (int j = 0; j < height; j++)
+		fp[j] = ptr + (Stride * j);
+	for (int j = 0; j < height; j++)
+		fp2[j] = ptr2 + (Stride * j);
+	int x2 = 0; int y2 = 0;
+	int B = 0;
+	int G = 0;
+	int R = 0;
+	for (y = 0; y < height; y += value)
+	{
+		for (x = 0; x < Stride; x += channel * value)
+		{
+			for (y2 = 0; y2 < value; y2++)
+			{
+				for (x2 = 0; x2 < value2 * channel; x2 += channel)
+				{
+					fp[y + y2][x + x2] = fp2[y + y2][x + x2] * (x2 / channel) / value2 + 255 * (value2 - x2 / 4) / value2;
+					fp[y + y2][x + x2 + 1] = fp2[y + y2][x + x2 + 1] * (x2 / channel) / value2 + 255 * (value2 - x2 / 4) / value2;
+					fp[y + y2][x + x2 + 2] = fp2[y + y2][x + x2 + 2] * (x2 / channel) / value2 + 255 * (value2 - x2 / 4) / value2;
+				}
+			}
+			for (y2 = 0; y2 < value2; y2++)
+			{
+				for (x2 = 0; x2 < value * channel; x2 += channel)
+				{
+					B = fp2[y + y2][x + x2] * (x2 / channel) / value2 + 255 * (value2 - x2 / 4) / value2;
+					G = fp2[y + y2][x + x2 + 1] * (x2 / channel) / value2 + 255 * (value2 - x2 / 4) / value2;
+					R = fp2[y + y2][x + x2 + 2] * (x2 / channel) / value2 + 255 * (value2 - x2 / 4) / value2;
+					if (B > 255)B = 255;
+					if (B < 0) B = 0;
+					if (G > 255)G = 255;
+					if (G < 0) G = 0;
+					if (R > 255)R = 255;
+					if (R < 0) R = 0;
+					fp[y + y2][x + x2] = B;
+					fp[y + y2][x + x2 + 1] = G;
+					fp[y + y2][x + x2 + 2] = R;
+
+				}
+			}
+		}
+	}*/
