@@ -85,7 +85,7 @@ namespace photoegg4._1
                 else if (func == (int)colorFunction.pasteImage)
                     Pixel_C.pasteImage((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, MyNewBmp2.Width, MyNewBmp2.Height, 300, 300, 4);
                 else if (func == (int)colorFunction.emboss)
-                    Pixel_C.emboss((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, -5, 5, false);
+                    Pixel_C.emboss((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, value_int_1, value_int_2, value_bool_1);
                 else if (func == (int)colorFunction.mosaic)
                     Pixel_C.mosaic((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, value_int_1);
                 else if (func == (int)colorFunction.horizontalFlip)
@@ -279,10 +279,21 @@ namespace photoegg4._1
             form.Show();
         }
 
+<<<<<<< HEAD
         private void 磁磚ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tileForm form = new tileForm(this);
             form.Show();
+=======
+        private void 水平翻轉ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            flipX();
+        }
+
+        private void 垂直翻轉ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            flipY();
+>>>>>>> 807509283792c2dd5577c3fff585c591a8688e23
         }
     }
 }
