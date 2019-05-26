@@ -57,3 +57,4 @@ E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\photoegg4.1\photoegg4.1\obj
 E:\桌面碟\專案資料夾\photoegg4.1\photoegg4.1\photoegg4.1\photoegg4.1\obj\x64\Release\photoegg4._1.mosaicForm.resources
 C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\photoegg4.1\obj\x64\Release\photoegg4._1.embossForm.resources
 C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\photoegg4.1\obj\x64\Release\photoegg4._1.mosaicForm.resources
+C:\Users\user\Desktop\陳增澤\gitegg\photoegg4.1\photoegg4.1\obj\x64\Release\photoegg4._1.tileForm.resources
