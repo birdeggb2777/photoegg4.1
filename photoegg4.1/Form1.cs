@@ -58,7 +58,13 @@ namespace photoegg4._1
                 originBitmap.Add(a);
                 pictureBox1.Image = a;
                 Now_Bitmap++;
-                tile(false);
+              /*  System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();//引用stopwatch物件
+                sw.Reset();//碼表歸零
+                sw.Start();//碼表開始計時
+                value_int_1 = 50;
+                blurry(false);
+                sw.Stop();//碼錶停止
+                MessageBox.Show(sw.Elapsed.TotalMilliseconds.ToString());*/
             }
         }
         public void Pixel_Operate(colorFunction fun)
@@ -79,7 +85,7 @@ namespace photoegg4._1
                 else if (func == (int)colorFunction.brightness)
                     Pixel_C.brightness((byte*)MyBmpData.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, value_int_1);
                 else if (func == (int)colorFunction.blurry)
-                    Pixel_C.blurry2((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, value_int_1);
+                    Pixel_C.blurry3((byte*)MyBmpData.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, value_int_1);
                 else if (func == (int)colorFunction.HSV)
                     Pixel_C.ConvertHSV((byte*)MyBmpData.Scan0, MyNewBmp.Width, MyNewBmp.Height, value_int_1, value_int_2, value_int_3, 4, value_bool_1, value_int_4);
                 else if (func == (int)colorFunction.pasteImage)
@@ -119,7 +125,7 @@ namespace photoegg4._1
                 else if (func == (int)colorFunction.brightness)
                     Pixel_C.brightness((byte*)MyBmpData3.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, value_int_1);
                 else if (func == (int)colorFunction.blurry)
-                    Pixel_C.blurry2((byte*)MyBmpData3.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, value_int_1);
+                    Pixel_C.blurry3((byte*)MyBmpData3.Scan0, (byte*)MyBmpData2.Scan0, MyNewBmp.Width, MyNewBmp.Height, 4, value_int_1);
                 else if (func == (int)colorFunction.HSV)
                     Pixel_C.ConvertHSV((byte*)MyBmpData3.Scan0, MyNewBmp.Width, MyNewBmp.Height, value_int_1, value_int_2, value_int_3, 4, value_bool_1, value_int_4);
                 else if (func == (int)colorFunction.emboss)
