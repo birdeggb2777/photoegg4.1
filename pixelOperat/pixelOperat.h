@@ -189,17 +189,17 @@ namespace pix {
 			delete[] fp;
 			delete[] fp2;
 		}
-		void tile(unsigned char* ptr, unsigned char* ptr2, int width, int height, int channel, int value)
+<<<<<<< HEAD
+		void tile(unsigned char* ptr, int width, int height, int channel, int value,int value2)
+=======
+		void tile(unsigned char* ptr, unsigned char* ptr2, int width, int height, int channel, int value,int value2)
+>>>>>>> c0a8e3419ffba74fc05f5ddbffadf2f5700fe85a
 		{
-			int value2 = 5;
 			unsigned char** fp = new unsigned char* [height];
-			unsigned char** fp2 = new unsigned char* [height];
 			const int recSize = value * value;
 			int Stride = width * channel, x = 0, y = 0;
 			for (int j = 0; j < height; j++)
 				fp[j] = ptr + (Stride * j);
-			for (int j = 0; j < height; j++)
-				fp2[j] = ptr2 + (Stride * j);
 			int x2 = 0; int y2 = 0;
 			int B = 0;
 			int G = 0;
