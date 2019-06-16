@@ -10,6 +10,7 @@
 #include <iostream>  
 using namespace System;
 using namespace std;
+//TEST
 namespace pix {
 
 	public ref class pixelOperate
